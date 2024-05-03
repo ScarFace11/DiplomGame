@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a61f08ea-67c2-486d-8fc7-61029c2ed5f1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/DiplomGame.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AllMazes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Levels.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Levels_menu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainMenu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MazeGenerator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MazeRandomGenerateEdit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Music.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpenGame.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sound/Background/BeepBox-Song.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sound/Background/Finish.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sound/Widgets/switch-menu.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sound/Widgets/target-menu.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/MazeClassic12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/MazeClassicmini1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/icons/finish-flag.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/life/heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/m1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/m2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/m3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/m4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/m5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/m6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/maze/maze1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/maze/maze2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/maze/maze3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/money/money.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/lose/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/walk/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/pacman/win/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/score/score.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_002.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_007.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_010.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/laser/image_part_011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/activated/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/neutral/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/retractable/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/retractable/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/retractable/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/to_hide/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/to_hide/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/trap/spike/to_hide/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/wall/stone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/way/Default1Way.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/way/way1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/maze.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/maze_settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/support.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tempCodeRunnerFile.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tempCodeRunnerFile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trap.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2eSjSPKsEZiLy4bkIWOkcJsReD9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.Levels_menu.executor": "Run",
+    "Python.MainMenu.executor": "Run",
+    "Python.Unnamed.executor": "Run",
+    "Python.maze.executor": "Run",
+    "Python.settings.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/user/AppData/Local/Programs/Python/Python312/python.exe",
+    "settings.editor.selected.configurable": "preferences.keymap"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a61f08ea-67c2-486d-8fc7-61029c2ed5f1" name="Changes" comment="" />
+      <created>1711904872993</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711904872993</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
