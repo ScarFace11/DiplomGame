@@ -18,7 +18,10 @@ class Player(pygame.sprite.Sprite):
         self.money = 0
 
         self.speed = maze_settings.Tile_size / 10.0
-        # ��������� �������
+
+        self.path = []
+        self.destroy_path = False
+        self.collision_rects = []
 
         self.life = 3
 
@@ -50,6 +53,57 @@ class Player(pygame.sprite.Sprite):
         for direction in self.facing:
             self.facing[direction] = False
         self.facing[key] = True
+
+    def get_coord(self):
+        col = self.rect.centerx // maze_settings.Tile_size
+        row = self.rect.centery // maze_settings.Tile_size
+        return col, row
+
+    def set_path(self, path):
+        self.path = path
+        self.create_collision_rects()
+        self.get_direction()
+
+    def create_collision_rects(self):
+        if self.path:
+            self.collision_rects = []
+            #print("Начало")
+            for point in self.path:
+                x = point.x * maze_settings.Tile_size - int(MazeSettings.Camera_Offset[0]) + (
+                        maze_settings.Tile_size // 2)
+                y = point.y * maze_settings.Tile_size - int(MazeSettings.Camera_Offset[1]) + (
+                        maze_settings.Tile_size // 2)
+                rect = pygame.Rect(
+                    (x + int(MazeSettings.Camera_Offset[0]), y + int(MazeSettings.Camera_Offset[1])),
+                    (1, 1))
+                self.collision_rects.append(rect)
+                print(rect)
+            #print("Конец")
+
+    def get_direction(self):
+        if self.collision_rects:
+            start = pygame.math.Vector2(self.rect.center)
+            end = pygame.math.Vector2(self.collision_rects[0].center)
+            #print(f"start: {start}\nend: {end}")
+            if (start - end) == [0, 0]:
+                self.direction = pygame.math.Vector2(0, 0)
+            else:
+                self.direction = (end - start).normalize()
+            #print(f"direction: {self.direction}")
+        else:
+            self.direction = pygame.math.Vector2(0, 0)
+            self.path = []
+
+    def check_collision(self):
+        if self.collision_rects:
+            self.destroy_path = False
+            for rect in self.collision_rects:
+                if rect.collidepoint(self.rect.center):
+                    del self.collision_rects[0]
+                    self.get_direction()
+        else:
+            self.destroy_path = True
+
 
     # animates the player actions
     def _animate(self):
@@ -141,3 +195,6 @@ class Player(pygame.sprite.Sprite):
         self.set_facing(face)
 
         self._animate()
+
+        self.check_collision()
+

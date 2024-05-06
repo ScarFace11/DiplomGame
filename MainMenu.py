@@ -37,7 +37,6 @@ def StartMenu():
     engine.set_sound(pygame_menu.sound.SOUND_TYPE_WIDGET_SELECTION, 'Sound/Widgets/target-menu.mp3')
     menu.set_sound(engine, recursive=True)
 
-    #menu.add.button("Играть", Levels)
     menu.add.button("Выбор уровня", Levels_menu)
     menu.add.button("Настройки", Settings)
     menu.add.button("Выход", action=pygame_menu.events.EXIT)

@@ -2,10 +2,12 @@ from random import randint
 from maze_settings import *
 from player import Player
 from Tile import *
+from Enemy import *
 from trap import Spike, Laser
 from game import Game
 from Music import *
 from pygame.sprite import spritecollideany
+from Pathfinder import Pathfinder
 
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 30)
@@ -15,7 +17,9 @@ class world:
     def __init__(self, world_data, screen):
         self.screen = screen
         self.world_data = world_data
+
         self._setup_world()
+        self.pathfinder = Pathfinder(self.world_data, self.player)
         self.game = Game(self.screen)
         self.death = False
         self.score_all = False
@@ -34,6 +38,7 @@ class world:
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.Group()
         self.way = pygame.sprite.Group()
+        self.WandererEnemy = pygame.sprite.Group()
         self.finish_flag = pygame.sprite.Group()
         self.SpikeTraps = pygame.sprite.Group()
         self.LaserTraps = pygame.sprite.Group()
@@ -44,6 +49,7 @@ class world:
 
         self.player_start_cord_x = 0
         self.player_start_cord_y = 0
+
         # Генерация монеток
         money_flag = True
         total_money = 5
@@ -86,6 +92,10 @@ class world:
                     tile = Wall((x, y), maze_settings.Tile_size)
                     self.tiles.add(tile)
                     self.all_sprite.add(tile)
+                elif value == 31:
+                    WandersSprite = Wanderer((x, y), maze_settings.Tile_size)
+                    self.WandererEnemy.add(WandersSprite)
+                    self.all_sprite.add(WandersSprite)
                 elif value == 41:
                     self.SpikeTrap = Spike((x, y), maze_settings.Tile_size)
                     self.SpikeTraps.add(self.SpikeTrap)
@@ -179,7 +189,6 @@ class world:
         # Итерируем по всем спрайтам игрока в группе
         for player in self.player.sprites():
             player.rect.x += player.direction.x * player.speed
-
             collided = False
 
             for sprite in self.tiles.sprites():
@@ -189,14 +198,10 @@ class world:
                     if player.direction.x < 0:  # Движение влево
                         player.rect.left = sprite.rect.right
                         player.direction.x = 0
-                        self.world_shift_x = 0
-                        self.world_shift_y = 0
                         self.current_x = player.rect.left
                     elif player.direction.x > 0:  # Движение вправо
                         player.rect.right = sprite.rect.left
                         player.direction.x = 0
-                        self.world_shift_x = 0
-                        self.world_shift_y = 0
                         self.current_x = player.rect.right
 
             # Если нет столкновений, определяем направление игрока
@@ -223,14 +228,10 @@ class world:
                     if player.direction.y > 0:  # Движение вниз
                         player.rect.bottom = sprite.rect.top
                         player.direction.y = 0
-                        self.world_shift_x = 0
-                        self.world_shift_y = 0
                         player.on_ground = True
                     elif player.direction.y < 0:  # Движение вверх
                         player.rect.top = sprite.rect.bottom
                         player.direction.y = 0
-                        self.world_shift_x = 0
-                        self.world_shift_y = 0
                         player.on_ceiling = True
 
             # Если нет столкновений, определяем направление игрока
@@ -337,8 +338,10 @@ class world:
                 self.set_Pause_Flag(False)
 
             elif Back_rect.collidepoint(mouse_pos):
-                from Levels import show_level_menu
-                show_level_menu()
+                GameMusicAndSounds.MusicOff()
+                from Levels_menu import Levels
+                Levels_obj = Levels()
+                return Levels_obj.Show_levels()
 
         Continue_collide = Continue_rect.collidepoint(mouse_pos)
         Back_collide = Back_rect.collidepoint(mouse_pos)
@@ -356,8 +359,14 @@ class world:
         Back_text = font.render("Выйти", True, Back_color)
         screen.blit(Back_text, Back_rect)
 
+    def MouseScreen(self, screen):
+        player = self.player.sprites()[0]
+        camera_offset = pygame.math.Vector2(player.rect.centerx - maze_settings.Width / 2,
+                                            player.rect.centery - maze_settings.Height / 2)
+        self.pathfinder.update(screen, camera_offset)
+
     # updating the game world from all changes committed
-    def update(self, screen, player_event):
+    def update(self, screen, player_event, world_event):
         # for draw tile
         # self.draw_tile()
 
@@ -370,7 +379,7 @@ class world:
         self.LaserTraps.update()
 
         self.all_sprite.custom_draw(self.player)
-
+        self.MouseScreen(screen)
         # for tile
         # self.tiles.draw(screen)
 
@@ -390,6 +399,9 @@ class world:
 
         # self.player.draw(screen)
 
+        # Enemy
+        #self.WandererEnemy.update()
+
         self._horizontal_movement_collision()
         self._vertical_movement_collision()
 
@@ -400,6 +412,11 @@ class world:
 
         if self.pause_flag:
             self.GamePause(screen)
+
+        if world_event == "LeftMouseDown":
+            self.pathfinder.create_path()
+        elif world_event == "RightMouseDown" or self.player.sprites()[0].destroy_path:
+            self.pathfinder.empty_path()
 
         clock.tick(fps)
 
@@ -412,13 +429,16 @@ class CameraGroup(pygame.sprite.Group):
         super().__init__()
         self.display_surface = pygame.display.get_surface()
         self.offset = pygame.math.Vector2()
+        self.offset_rect = None
 
     def custom_draw(self, player_group):
         if player_group:
             player = player_group.sprites()[0]
             self.offset.x = player.rect.centerx - maze_settings.Width / 2
             self.offset.y = player.rect.centery - maze_settings.Height / 2
+            MazeSettings.Camera_Offset = self.offset
+
             for sprite in self:
-                offset_rect = sprite.rect.copy()
-                offset_rect.center -= self.offset
-                self.display_surface.blit(sprite.image, offset_rect)
+                self.offset_rect = sprite.rect.copy()
+                self.offset_rect.center -= self.offset
+                self.display_surface.blit(sprite.image, self.offset_rect)

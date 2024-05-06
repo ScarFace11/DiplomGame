@@ -1,7 +1,5 @@
 from sys import exit
 
-import pygame
-
 from maze_settings import *
 from maze import world
 from Music import *
@@ -12,19 +10,24 @@ class Main:
         self.screen = screen
         self.clock = pygame.time.Clock()
         self.player_event = False
+        self.World_event = None
         self.pause_active = False  # Флаг для отслеживания активности режима паузы
 
         # self.maze = None
 
     def main(self, mazenum):
         World = world(mazenum, self.screen)  # ---------
-
         while True:
             self.screen.fill((35, 45, 60))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        self.World_event = "LeftMouseDown"
+                    elif event.button == 3:
+                        self.World_event = "RightMouseDown"
                 elif event.type == pygame.VIDEORESIZE:
                     self.screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
                 elif event.type == pygame.KEYDOWN:
@@ -56,7 +59,8 @@ class Main:
                 self.player_event = 'stop'
                 World.death = False
 
-            World.update(self.screen, self.player_event)  # --------
+            World.update(self.screen, self.player_event, self.World_event)  # --------
+            self.World_event = None
 
             if not World.pause_flag:
                 self.pause_active = False

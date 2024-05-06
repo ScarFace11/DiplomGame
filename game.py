@@ -63,5 +63,6 @@ class Game:
         for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE: 
-                        from Levels import show_level_menu
-                        show_level_menu()
+                        from Levels_menu import Levels
+                        Levels_obj = Levels()
+                        return Levels_obj.Show_levels()
