@@ -1,5 +1,5 @@
 import pygame
-
+from AllMazes import maze1
 pygame.init()
 """
 Нумерация в лабиринте:
@@ -43,10 +43,11 @@ class MazeSettings:
         self.Settings_TileSizeIndex = 0
         self.Tile_size = 50
 
-        self.MazeStructure = {0, 2, 31, 41, 42, 5, 6}
+        self.MazeStructure = {0, 2, 31, 32, 41, 42, 5, 6, 10}
         self.Camera_Offset = [0, 0]
 
         self.Path = None
+        self.FastMazeStart = maze1
 
     def Reset_Settings(self):
         self.background_image = pygame.image.load('Sprite/bg.jpg')

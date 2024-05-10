@@ -15,8 +15,8 @@ class Main:
 
         # self.maze = None
 
-    def main(self, mazenum):
-        World = world(mazenum, self.screen)  # ---------
+    def main(self, mazenum, Maze_mode):
+        World = world(mazenum, self.screen, Maze_mode)  # ---------
         while True:
             self.screen.fill((35, 45, 60))
             for event in pygame.event.get():
@@ -26,22 +26,33 @@ class Main:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         self.World_event = "LeftMouseDown"
+                        self.player_event = "Automation"
                     elif event.button == 3:
                         self.World_event = "RightMouseDown"
+                    World.Player_Press_Button = True
                 elif event.type == pygame.VIDEORESIZE:
                     self.screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        if not World.pause_flag and (not World.score_all and World.player.sprites()[0].life > 0):  # Проверяем, нужно ли выходить из GamePause
-                            World.set_Pause_Flag(True)
-                            self.pause_active = True  # Устанавливаем флаг активности режима паузы
+                        if World.player:
+                            if not World.pause_flag and (not World.score_all and World.player.sprites()[
+                                0].life > 0):  # Проверяем, нужно ли выходить из GamePause
+                                World.set_Pause_Flag(True)
+                                self.pause_active = True  # Устанавливаем флаг активности режима паузы
+                            else:
+                                World.set_Pause_Flag(False)
+                                self.pause_active = False
                         else:
-                            World.set_Pause_Flag(False)
-                            self.pause_active = False
+                            if self.pause_active:
+                                World.set_Pause_Flag(False)
+                                self.pause_active = False
+                            else:
+                                World.set_Pause_Flag(True)
+                                self.pause_active = True
                     elif self.pause_active:
                         pass
                     elif event.key == pygame.K_SPACE:
-                        self.player_event = 'stop'
+                        self.player_event = "stop"
                     elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
                         self.player_event = 'left'
                     elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
@@ -53,11 +64,22 @@ class Main:
                     elif event.key == pygame.K_r:
                         self.player_event = 'restart'
 
+                    World.Player_Press_Button = True
+
+
                 # elif event.type == pygame.KEYUP:
                 # self.player_event = 'stop'
             if World.death:
-                self.player_event = 'stop'
+                World.Player_death_and_not_Press_button = True
+                World.Player_Press_Button = False
+                self.player_event = "stop"
+
                 World.death = False
+
+                if World.WandererEnemy:
+                    World.pathWanderer.empty_path()
+            if World.pause_flag or World.finished or World.score_all:
+                World.Player_Press_Button = False
 
             World.update(self.screen, self.player_event, self.World_event)  # --------
             self.World_event = None
@@ -66,3 +88,8 @@ class Main:
                 self.pause_active = False
             pygame.display.update()
             self.clock.tick(fps)
+
+
+if __name__ == "__main__":
+    OpenGameObj = Main(maze_settings.screen)
+    OpenGameObj.main(maze_settings.FastMazeStart)

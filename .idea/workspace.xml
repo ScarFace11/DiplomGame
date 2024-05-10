@@ -5,19 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a61f08ea-67c2-486d-8fc7-61029c2ed5f1" name="Changes" comment="diplom">
-      <change afterPath="$PROJECT_DIR$/Enemy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pathfinder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sprite/Enemy/Wanderer/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/Enemy/Wanderer/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/Enemy/Wanderer/3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllMazes.py" beforeDir="false" afterPath="$PROJECT_DIR$/AllMazes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enemy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Levels_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Levels_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pathfinder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pathfinder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maze.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maze_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze_settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/support.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,26 +50,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.AllMazes.executor": "Run",
-    "Python.Levels_menu.executor": "Run",
-    "Python.MainMenu.executor": "Run",
-    "Python.OpenGame.executor": "Run",
-    "Python.Pathfinder.executor": "Run",
-    "Python.Unnamed.executor": "Run",
-    "Python.maze.executor": "Run",
-    "Python.player.executor": "Run",
-    "Python.settings.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/user/AppData/Local/Programs/Python/Python312/python.exe",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.AllMazes.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Levels_menu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MainMenu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OpenGame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Pathfinder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Python.maze.executor&quot;: &quot;Run&quot;,
+    &quot;Python.player.executor&quot;: &quot;Run&quot;,
+    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.тестовая от ChatGPT.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/1Program_lenguage/Python/тестовая от ChatGPT.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

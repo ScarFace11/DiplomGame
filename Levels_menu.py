@@ -8,10 +8,12 @@ class Levels:
         self.menu = pygame_menu.Menu("Выбор уровня", maze_settings.Width, maze_settings.Height,
                                      theme=pygame_menu.themes.THEME_BLUE)
         self.screen = maze_settings.screen
+        self.Maze_Mode = "Collect points"
 
     def Show_levels(self):
         Level_type = [("Стандартный лабиринт", "Standard_maze_list"),
-                      ("Поиск флага", "Search_Flag_Maze_List")]
+                      ("Поиск флага", "Search_Flag_Maze_List"),
+                      ("Головоломки", "Puzzle_maze_List")]
 
         self.menu.add.selector(title="Тип уровня", items=Level_type,
                                default=0, selector_id="Level_type",
@@ -49,6 +51,7 @@ class Levels:
                 self.menu.remove_widget(f"b{i}")
 
         self.create_frame_selector_levels(Mazes_List.get(value[0][1]))
+        self.Maze_Mode = Mazes_mode_List.get(value[0][1])
 
     def Pick_Maze(self, key, maze_type):
         from OpenGame import Main
@@ -56,7 +59,8 @@ class Levels:
 
         OpG = Main(maze_settings.screen)
         MazeMask = deepcopy(maze_type.get(key))
-        OpG.main(MazeMask)
+
+        OpG.main(MazeMask, self.Maze_Mode)
 
     def Back(self):
         from MainMenu import StartMenu

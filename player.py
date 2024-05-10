@@ -21,6 +21,7 @@ class Player(pygame.sprite.Sprite):
 
         self.path = []
         self.destroy_path = False
+        self.empty_path = None
         self.collision_rects = []
 
         self.life = 3
@@ -77,7 +78,7 @@ class Player(pygame.sprite.Sprite):
                     (x + int(MazeSettings.Camera_Offset[0]), y + int(MazeSettings.Camera_Offset[1])),
                     (1, 1))
                 self.collision_rects.append(rect)
-                print(rect)
+                #print(rect)
             #print("Конец")
 
     def get_direction(self):
@@ -102,8 +103,9 @@ class Player(pygame.sprite.Sprite):
                     del self.collision_rects[0]
                     self.get_direction()
         else:
-            self.destroy_path = True
-
+            #self.destroy_path = True
+            if self.empty_path:
+                self.empty_path()
 
     # animates the player actions
     def _animate(self):
@@ -180,7 +182,6 @@ class Player(pygame.sprite.Sprite):
     # update the player's state
     def update(self, player_event, face):
         self._get_status()
-
         if self.life > 0 and not self.game_over:
             self._get_input(player_event)
         elif self.game_over and self.win:
@@ -197,4 +198,3 @@ class Player(pygame.sprite.Sprite):
         self._animate()
 
         self.check_collision()
-
