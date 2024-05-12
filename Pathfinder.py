@@ -2,10 +2,10 @@ import pygame
 from pathfinding.core.grid import Grid
 from pathfinding.finder.a_star import AStarFinder
 from pathfinding.finder.best_first import BestFirst
-from pathfinding.finder.breadth_first import BreadthFirstFinder
 from maze_settings import maze_settings
 
 from random import randint
+
 
 class Pathfinder:
     def __init__(self, matrix, main_person):
@@ -100,7 +100,6 @@ class PathfinderEnemy(Pathfinder):
 
                 if sprite.name == "Red_Wanderer":
                     finder = AStarFinder()
-                    #finder = BreadthFirstFinder()
                 elif sprite.name == "Blue_Wanderer":
                     finder = BestFirst()
                 else:
@@ -113,8 +112,9 @@ class PathfinderEnemy(Pathfinder):
 
     def create_Pink_Wanderer_path(self, maze):
         self.path = []
+
         for sprite in self.main_person.sprites():
-            if sprite.name == 'Pink_Wanderer':
+            if sprite.name == 'Pink_Wanderer' and not sprite.path:
                 start_x, start_y = sprite.get_coord()
                 start = self.grid.node(start_x, start_y)
 
@@ -149,7 +149,8 @@ class PathfinderEnemy(Pathfinder):
     def Enemy_update(self, screen, offset):
         self.screen = screen
         self.camera_offset = offset
-        #self.draw_Enemy_path()
+        if maze_settings.Visibility_Enemy_Path:
+            self.draw_Enemy_path()
 
 
 """"

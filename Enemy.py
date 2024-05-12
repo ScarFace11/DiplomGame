@@ -110,6 +110,7 @@ class Wanderer_Pink(Enemy):
         self.name = "Pink_Wanderer"
         self.color_path = '#FF80FF'
         self.speed = maze_settings.Tile_size / 10
+        self.path = None
 
     def update(self):
         self.pos += self.direction * self.speed

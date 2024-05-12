@@ -5,18 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a61f08ea-67c2-486d-8fc7-61029c2ed5f1" name="Changes" comment="diplom">
-      <change afterPath="$PROJECT_DIR$/Sprite/Enemy/Wanderer/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sprite/Enemy/Wanderer/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConvertMazeFromPng.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprite/m8.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllMazes.py" beforeDir="false" afterPath="$PROJECT_DIR$/AllMazes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Enemy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Levels_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Levels_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MazeGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/MazeGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MazeRandomGenerateEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/MazeRandomGenerateEdit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenGame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pathfinder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pathfinder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maze.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maze_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze_settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +39,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ScarFace11&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ScarFace11/DiplomGame.git&quot;,
+    &quot;accountId&quot;: &quot;b1275242-df0f-4ea8-b1c2-d0487c14f8b3&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -50,27 +68,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.AllMazes.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Levels_menu.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MainMenu.executor&quot;: &quot;Run&quot;,
-    &quot;Python.OpenGame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Pathfinder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Python.maze.executor&quot;: &quot;Run&quot;,
-    &quot;Python.player.executor&quot;: &quot;Run&quot;,
-    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
-    &quot;Python.тестовая от ChatGPT.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/1Program_lenguage/Python/тестовая от ChatGPT.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.2134.executor": "Run",
+    "Python.AllMazes.executor": "Run",
+    "Python.ConvertMazeFromPng.executor": "Run",
+    "Python.Levels_menu.executor": "Run",
+    "Python.MainMenu.executor": "Run",
+    "Python.MazeGenerator.executor": "Run",
+    "Python.MazeRandomGenerateEdit.executor": "Run",
+    "Python.OpenGame.executor": "Run",
+    "Python.Pathfinder.executor": "Run",
+    "Python.Shop.executor": "Run",
+    "Python.Unnamed.executor": "Run",
+    "Python.maze.executor": "Run",
+    "Python.maze_settings.executor": "Run",
+    "Python.player.executor": "Run",
+    "Python.settings.executor": "Run",
+    "Python.тестовая от ChatGPT.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/1Program_lenguage/Python/тестовая от ChatGPT.py",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -95,7 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714757241148</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="diplom">
+      <option name="closed" value="true" />
+      <created>1715371851062</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715371851062</updated>
+    </task>
+    <task id="LOCAL-00003" summary="diplom">
+      <option name="closed" value="true" />
+      <created>1715371941971</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715371941971</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +151,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="diplom!" />
     <MESSAGE value="diplom" />
     <option name="LAST_COMMIT_MESSAGE" value="diplom" />
   </component>

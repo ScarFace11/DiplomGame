@@ -18,6 +18,11 @@ def StartMenu():
         Levels_obj = Levels()
         return Levels_obj.Show_levels()
 
+    def Shop_Menu():
+        from Shop import Shop
+        Shopmenuobj = Shop()
+        return Shopmenuobj.Show_Shop()
+
     def Settings():
         from settings import SettingsMenu
         settingsmenuobj = SettingsMenu()
@@ -38,8 +43,10 @@ def StartMenu():
     menu.set_sound(engine, recursive=True)
 
     menu.add.button("Выбор уровня", Levels_menu)
+    menu.add.button("Магазин", Shop_Menu)
     menu.add.button("Настройки", Settings)
     menu.add.button("Выход", action=pygame_menu.events.EXIT)
+
 
     menu.mainloop(maze_settings.screen)
 

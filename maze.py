@@ -16,12 +16,25 @@ clock = pygame.time.Clock()
 font = pygame.font.Font(None, 30)
 
 
-class world:
-    def __init__(self, world_data, screen, Maze_mode):
+class CreateWorld:
+    def __init__(self, world_data, screen, Maze_mode, time):
+
         self.timer_font = pygame.font.SysFont("Calibri", 38)
         self.start_time = pygame.time.get_ticks()
+        self.start_left_time = pygame.time.get_ticks()
         self.time_ms = 0, 0
         self.timer_surf = self.timer_font.render(f'{self.time_ms[0]}:{self.time_ms[1]:02d}', True, (255, 255, 255))
+
+        self.timer_left = None
+        self.Enemy_current_time_spawn = None
+        if time:
+            self.timer_left = time
+            self.timer_left_minutes = self.timer_left // 60
+            self.timer_left_seconds = self.timer_left % 60
+            self.timer_left_font = pygame.font.SysFont("Calibri", 38, True, True)
+            self.timer_left_surf = self.timer_left_font.render(
+                f'{self.timer_left_minutes}:{self.timer_left_seconds:02d}', True,
+                (248, 0, 0))
 
         self.screen = screen
         self.Maze_mode = Maze_mode
@@ -50,6 +63,9 @@ class world:
         self.Timer_Respawn = 0
         self.Timer_Menu_Pause = 0
         self.Timer_Press_Button = 0
+
+        self.take_money = 0
+
         self.Music = GameMusic()
         self.Music.Background()
 
@@ -181,16 +197,18 @@ class world:
             collided_goal = spritecollideany(player, self.goal)
             if collided_goal is not None:
                 collided_goal.kill()
+                self.take_money += 1
+
 
                 # Инициализируем collided_score заранее
             collided_score = None
             if self.score:
                 collided_score = spritecollideany(player, self.score)
 
-            if self.Maze_mode == "Collect points" and collided_score is not None:
+            if collided_score is not None:
                 collided_score.kill()
                 self.Score_spawn -= 1
-                if self.Score_spawn == 0:
+                if self.Maze_mode == "Collect points" and self.Score_spawn == 0:
                     self.score_all = True
 
             collide_finish_flag = None
@@ -214,7 +232,7 @@ class world:
                         player.rect.y = self.player_start_cord_y
                         player.life -= 1
                         self.death = True
-                for Wanderer in self.WandererEnemy.sprites():
+                for _ in self.WandererEnemy.sprites():
                     if spritecollideany(player, self.WandererEnemy):
                         player.rect.x = self.player_start_cord_x
                         player.rect.y = self.player_start_cord_y
@@ -241,7 +259,6 @@ class world:
             self.Player_Invincibility = True
 
     # придумать уровни с головоломками
-    # сделать уровни сложности лёгкий без ничего, нормальный с врагами, слодный с таймером + враги
     # возможно сделать слои на карте
     # сделать магазин со скинами за монеты
     # мб сделать бесконечный режим, где надо просто очки лутать (игра будет на рекорд)
@@ -306,59 +323,6 @@ class world:
                     elif player.rect.top >= sprite.rect.bottom and player.direction.y < 0:
                         self.player_face = 'up'
                         break  # Прерываем цикл, если направление найдено
-
-    """ запомнить
-        def _movement_collision(self):
-                player = self.player.sprite
-                if player.direction.y != 0: is_vertical = True
-                else: is_vertical = False
-                
-                if is_vertical:
-                        player.rect.y += player.direction.y * player.speed
-                else:
-                        player.rect.x += player.direction.x * player.speed
-
-                collided = False  # Флаг для отслеживания столкновений
-
-                for sprite in self.tiles.sprites():
-                        if sprite.rect.colliderect(player.rect):
-                                collided = True  # Если есть столкновение, устанавливаем флаг в True
-
-                                if is_vertical:  # Проверка столкновений по вертикали
-                                        if player.direction.y > 0:  # Движение вниз
-                                                player.rect.bottom = sprite.rect.top
-                                                player.direction.y = 0
-                                        elif player.direction.y < 0:  # Движение вверх
-                                                player.rect.top = sprite.rect.bottom
-                                                player.direction.y = 0
-                                else:  # Проверка столкновений по горизонтали
-                                        if player.direction.x < 0:  # Движение влево
-                                                player.rect.left = sprite.rect.right
-                                                player.direction.x = 0
-                                        elif player.direction.x > 0:  # Движение вправо
-                                                player.rect.right = sprite.rect.left
-                                                player.direction.x = 0
-                                                self.world_shift_x = 0
-                                                self.world_shift_y = 0
-
-                # Если нет столкновений, определяем направление игрока
-                if not collided:
-                        for sprite in self.tiles.sprites():
-                                if is_vertical:
-                                        if player.rect.bottom <= sprite.rect.top and player.direction.y > 0:
-                                                self.player_face = 'down'
-                                                break
-                                        elif player.rect.top > sprite.rect.bottom and player.direction.y < 0:
-                                                self.player_face = 'up'
-                                                break
-                                else:
-                                        if player.rect.left != sprite.rect.right and player.direction.x < 0:
-                                                self.player_face = 'left'
-                                                break
-                                        elif player.rect.right != sprite.rect.left and player.direction.x > 0:
-                                                self.player_face = 'right'
-                                                break
-        """
 
     # Обработка события паузы
     def set_Pause_Flag(self, value):
@@ -441,14 +405,27 @@ class world:
         self.pathWanderer.Enemy_update(screen, camera_offset)
 
     def Print_Timer(self):
-        self.time_ms = self.current_time - self.start_time
-        new_hms = (self.time_ms // (1000 * 60)) % 60, (self.time_ms // 1000) % 60
-        if new_hms != self.time_ms:
-            self.time_ms = new_hms
-            self.timer_surf = self.timer_font.render(f'{self.time_ms[0]}:{self.time_ms[1]:02d}', True,
-                                                     (255, 255, 255))
-
+        if self.Player_Press_Button:
+            self.time_ms = self.current_time - self.start_time
+            new_hms = (self.time_ms // (1000 * 60)) % 60, (self.time_ms // 1000) % 60
+            if new_hms != self.time_ms:
+                self.time_ms = new_hms
+                self.timer_surf = self.timer_font.render(f'{self.time_ms[0]}:{self.time_ms[1]:02d}', True,
+                                                         (255, 255, 255))
         self.screen.blit(self.timer_surf, (maze_settings.Width // 2 - 50, maze_settings.Height - 50))
+
+        if self.timer_left:
+            if self.Player_Press_Button:
+                while self.timer_left > 0 and self.current_time - self.start_left_time > 1000 and not self.pause_flag:
+                    self.timer_left -= 1
+                    self.timer_left_minutes = self.timer_left // 60
+                    self.timer_left_seconds = self.timer_left % 60
+                    self.timer_left_surf = self.timer_left_font.render(
+                        f'{self.timer_left_minutes}:{self.timer_left_seconds:02d}',
+                        True, (248, 0, 0))
+                    self.start_left_time = self.current_time
+            self.screen.blit(self.timer_left_surf, (maze_settings.Width // 2 - self.timer_left_surf.get_width() // 2,
+                                                    self.timer_left_surf.get_width() - self.timer_left_surf.get_width() // 2))
 
     # Обновление игры со всеми изменениями
     def update(self, screen, player_event, world_event):
@@ -469,7 +446,7 @@ class world:
             # for collision
             self._handle_collision()
 
-            #self.Invincibility_After_Respawn()
+            self.Invincibility_After_Respawn()
             self.Player_Create_path(screen, world_event)
             self.player.update(player_event, self.player_face)
 
@@ -483,30 +460,28 @@ class world:
                         self.Enemy_current_time_spawn = self.current_time
 
                     for sprite in self.WandererEnemy.sprites():
-                        if sprite.name == 'Pink_Wanderer':
-                            if not sprite.path:
-                                self.pathWanderer.create_Pink_Wanderer_path(self.world_data)
-
+                        if sprite.name == 'Pink_Wanderer' and not sprite.path:
+                            self.pathWanderer.create_Pink_Wanderer_path(self.world_data)
             self._horizontal_movement_collision()
             self._vertical_movement_collision()
 
             # отображение хп и проверка конца игры
             self.game.show_life(self.player)
-            self.game.game_state(self.player.sprites()[0], self.score_all, self.finished, self.time_ms)
-            if not self.score_all and not self.finished and self.player.sprites()[0].life != 0:
+            self.game.game_state(self.player.sprites()[0], self.score_all, self.finished, self.time_ms, self.timer_left, self.take_money, world_event)
+            if not self.score_all and not self.finished and self.player.sprites()[0].life != 0 and self.timer_left != 0:
                 self.Print_Timer()
+
+        if world_event == "RightMouseDown":
+            if self.player.sprites()[0].empty_path:
+                self.player.sprites()[0].empty_path()
 
         if self.pause_flag:
             self.Timer_Menu_Pause = pygame.time.get_ticks()
             self.GamePause(screen)
 
-            if world_event == "RightMouseDown":
-                if self.player.sprites()[0].empty_path:
-                    self.player.sprites()[0].empty_path()
-
         clock.tick(fps)
 
-        text_fps = font.render(str(int(clock.get_fps())), 1, (255, 255, 255))
+        text_fps = font.render(str(int(clock.get_fps())), True, (255, 255, 255))
         screen.blit(text_fps, (10, 100))
 
 

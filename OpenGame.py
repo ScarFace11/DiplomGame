@@ -1,7 +1,7 @@
 from sys import exit
 
 from maze_settings import *
-from maze import world
+from maze import CreateWorld
 from Music import *
 
 
@@ -15,8 +15,8 @@ class Main:
 
         # self.maze = None
 
-    def main(self, mazenum, Maze_mode):
-        World = world(mazenum, self.screen, Maze_mode)  # ---------
+    def main(self, mazenum, Maze_mode, time):
+        World = CreateWorld(mazenum, self.screen, Maze_mode, time)  # ---------
         while True:
             self.screen.fill((35, 45, 60))
             for event in pygame.event.get():
@@ -34,9 +34,9 @@ class Main:
                     self.screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
+                        self.World_event = "ESCDown"
                         if World.player:
-                            if not World.pause_flag and (not World.score_all and World.player.sprites()[
-                                0].life > 0):  # Проверяем, нужно ли выходить из GamePause
+                            if not World.pause_flag and (not World.score_all and World.player.sprites()[0].life > 0):  # Проверяем, нужно ли выходить из GamePause
                                 World.set_Pause_Flag(True)
                                 self.pause_active = True  # Устанавливаем флаг активности режима паузы
                             else:
@@ -49,8 +49,6 @@ class Main:
                             else:
                                 World.set_Pause_Flag(True)
                                 self.pause_active = True
-                    elif self.pause_active:
-                        pass
                     elif event.key == pygame.K_SPACE:
                         self.player_event = "stop"
                     elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
@@ -62,10 +60,12 @@ class Main:
                     elif event.key == pygame.K_UP or event.key == pygame.K_w:
                         self.player_event = 'up'
                     elif event.key == pygame.K_r:
-                        self.player_event = 'restart'
+                        if not maze_settings.Visibility_Enemy_Path:
+                            maze_settings.Visibility_Enemy_Path = True
+                        else:
+                            maze_settings.Visibility_Enemy_Path = False
 
                     World.Player_Press_Button = True
-
 
                 # elif event.type == pygame.KEYUP:
                 # self.player_event = 'stop'
@@ -92,4 +92,4 @@ class Main:
 
 if __name__ == "__main__":
     OpenGameObj = Main(maze_settings.screen)
-    OpenGameObj.main(maze_settings.FastMazeStart)
+    OpenGameObj.main(maze_settings.FastMazeStart, "Collect points", None)

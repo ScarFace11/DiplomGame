@@ -13,6 +13,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 """
+
+
 def GetMazeFromParcing():
     #Нерабочая версия № 2
     """
@@ -104,57 +106,23 @@ def GetMazeFromParcing():
     else:
         print("Произошла ошибка:", response.status_code)
     """
+
+
 #GetMazeFromParcing()
-"""
-def convert_image_to_binary(image_path, wall_thickness, scale_factor):
-    image = Image.open(image_path)
-    image = image.convert("L")  # Преобразование в оттенки серого
-    pixels = image.load()
-    width, height = image.size
 
-    scaled_width = width // scale_factor
-    scaled_height = height // scale_factor
-
-    binary_data = []
-
-    for y in range(0, scaled_height):
-        row_data = []
-        for x in range(0, scaled_width):
-            pixel = pixels[x * scale_factor, y * scale_factor]
-            if pixel == 0 or (x < wall_thickness or x >= scaled_width - wall_thickness or y < wall_thickness or y >= scaled_height - wall_thickness):
-                row_data.append(1)  # Черный цвет или граница стенки
-            else:
-                row_data.append(0)  # Белый цвет
-        binary_data.append(row_data)
-
-    return binary_data
-
-def GetMazeFromImage():
-    maze_name = 'MazeClassicmini1'
-    image_path = f"Sprite/{maze_name}.png"
-    wall_thickness = 1
-    scale_factor = 2
-    binary_data = convert_image_to_binary(image_path, wall_thickness, scale_factor)
-    maze = binary_data
-
-    print(f"{maze_name} = [")
-    for row in maze:
-        print(f"{row},")
-    print(']')
-
-GetMazeFromImage()
-"""
 
 import random
-from OpenGame import *
+
 
 class Node:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
+
 def is_valid_wall(maze, y, x):
-    return maze[y][x] == 1 and maze[y-1][x] == 1 and maze[y+1][x] == 1
+    return maze[y][x] == 1 and maze[y - 1][x] == 1 and maze[y + 1][x] == 1
+
 
 def remove_walls(maze, remove_walls_count):
     if not remove_walls_count or not maze:
@@ -183,7 +151,8 @@ def remove_walls(maze, remove_walls_count):
 
     return maze
 
-def generate_maze(width, height, remove_walls_count):
+
+def generate_maze(width, height, remove_walls_count, StateFlag):
     maze = [[1 for _ in range(width)] for _ in range(height)]
 
     def recursive_backtracking(x, y):
@@ -209,6 +178,9 @@ def generate_maze(width, height, remove_walls_count):
     if empty_cells:
         y, x = random.choice(empty_cells)
         maze[y][x] = 2
+    if empty_cells and StateFlag:
+        y, x = random.choice(empty_cells)
+        maze[y][x] = 10
     """
     for i in range(40):
         empty_cells = [(y, x) for y in range(height) for x in range(width) if maze[y][x] == 0]
@@ -218,23 +190,23 @@ def generate_maze(width, height, remove_walls_count):
     """
     return maze, (start_x, start_y)
 
+
 def print_maze(maze, maze_name):
     print(f"{maze_name} = [")
     for row in maze:
         print(f"{row},")
     print(']')
 
+
 def main():
     width, height = 11, 11  # задайте нужные размеры лабиринта
     maze_name = "my_maze"
-    
+
     remove_walls_count = 0
-    remove_walls_count = max(0, min(remove_walls_count, (width - 1) * (height - 1) // 2 - 1))  # Убеждаемся, что значение находится в диапазоне от 0 до максимального возможного числа
+    remove_walls_count = max(0, min(remove_walls_count, (width - 1) * (
+            height - 1) // 2 - 1))  # Убеждаемся, что значение находится в диапазоне от 0 до максимального возможного числа
 
     maze, start = generate_maze(width, height, remove_walls_count)
     print_maze(maze, maze_name)
-    
-    #screen = pygame.display.set_mode((Width, Height))
-    #OpG = Main(screen)
-    #OpG.main(maze)
+
 #main()

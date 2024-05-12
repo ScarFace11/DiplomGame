@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.empty_path = None
         self.collision_rects = []
 
-        self.life = 3
+        self.life = maze_settings.Player_hp
 
         self.status = "walk"
 
@@ -70,12 +70,12 @@ class Player(pygame.sprite.Sprite):
             self.collision_rects = []
             #print("Начало")
             for point in self.path:
-                x = point.x * maze_settings.Tile_size - int(MazeSettings.Camera_Offset[0]) + (
+                x = point.x * maze_settings.Tile_size - int(maze_settings.Camera_Offset[0]) + (
                         maze_settings.Tile_size // 2)
-                y = point.y * maze_settings.Tile_size - int(MazeSettings.Camera_Offset[1]) + (
+                y = point.y * maze_settings.Tile_size - int(maze_settings.Camera_Offset[1]) + (
                         maze_settings.Tile_size // 2)
                 rect = pygame.Rect(
-                    (x + int(MazeSettings.Camera_Offset[0]), y + int(MazeSettings.Camera_Offset[1])),
+                    (x + int(maze_settings.Camera_Offset[0]), y + int(maze_settings.Camera_Offset[1])),
                     (1, 1))
                 self.collision_rects.append(rect)
                 #print(rect)
@@ -165,14 +165,6 @@ class Player(pygame.sprite.Sprite):
             elif player_event == "stop":
                 self.direction.x = 0
                 self.direction.y = 0
-
-            elif player_event == "restart":
-                self.rect.x = 580
-                self.rect.y = 485
-
-        # else:
-        # self.direction.x = 0
-        # self.direction.y = 0
 
     # identifies player action
     def _get_status(self):
